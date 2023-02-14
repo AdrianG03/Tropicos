@@ -38,9 +38,9 @@ let arr2=arr.push('Aaaaaaaa medio metro');
 //console.log(arr);
 
 arr.forEach(element=>{
-    //console.log(element);
-    //document.write(element);
-})
+    console.log(element);
+    document.write(element);
+});
 
 for (let i = 0; i < arr.length; i++) {
     //console.log(i);
