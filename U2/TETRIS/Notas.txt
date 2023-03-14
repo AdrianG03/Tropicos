@@ -1,0 +1,20 @@
+======CONTROLADR DE VERSIONES=======
+Primero descargar el git
+    yo no lo descargo porque ya lo tengo xdxdxd
+Instalarlo bajo las indicaciones que trae
+Logearse en la plataforma de GitLab
+Poner correo, contraseña y datos
+Crear un proyecto con pages/html en templates
+Revisamos si hay clave, si hay se conecta, si no,
+    se genera por medio de unos comandos en la
+    misma terminal, despues se pone la llave
+    en el gitlab.
+
+====Para la llave====
+Para revisar la clave es ls -al ~/.ssh
+si no existe generamos un directorio para guargarla
+    con mkdir $HOME/.ssh
+En caso de generarla ssh-keygen -t rsa -b 4096 -C correo
+Con esto queda guardado en el directorio indicado.
+
+Ir a ssh key en git lab y ahi es dode se puede agregar
