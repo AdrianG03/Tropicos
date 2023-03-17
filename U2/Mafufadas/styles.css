@@ -1,0 +1,8 @@
+.lienzo{
+    width: 70%;
+    height: 70%;
+    background-color: black;
+    margin: 0 auto;
+    display: flex;
+    color: antiquewhite;
+}
