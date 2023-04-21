@@ -13,6 +13,15 @@ let altoTablero = 20;
 let anchoCanvas = 400;
 let altoCanvas = 640;
 
+//ANCHOR Color fichas
+var rojo = "#FF0000";
+var morado = "#800080";
+var naranja = "#FF8C00";
+var amarillo = "#FFD700";
+var verde = "#008000";
+var cyan = "#00CED1";
+var azul = "#0000CD";
+
 //ANCHOR 3.-Definir tablero
 //Matriz de tablero(12x21)
 let tablero=[
@@ -241,8 +250,22 @@ let objPieza=function(){
     this.dibuja=function () {
         for(py=0; py<4; py++){
             for(px=0; px<4; px++){
-                if(fichasGrafico[this.tipo][this.angulo][py][px]!=0){
-                    ctx.fillStyle ='#777';
+                if(fichasGrafico[this.tipo][this.angulo][py][px] > 0){
+                    if(fichasGrafico[this.tipo][this.angulo][py][px] == 1)
+                        ctx.fillStyle = rojo;
+                    if(fichasGrafico[this.tipo][this.angulo][py][px] == 2)
+                        ctx.fillStyle = morado;
+                    if(fichasGrafico[this.tipo][this.angulo][py][px] == 3)
+                        ctx.fillStyle = naranja;
+                    if(fichasGrafico[this.tipo][this.angulo][py][px] == 4)
+                        ctx.fillStyle = amarillo; 
+                    if(fichasGrafico[this.tipo][this.angulo][py][px] == 5)
+                        ctx.fillStyle = verde;
+                    if(fichasGrafico[this.tipo][this.angulo][py][px] == 6)
+                        ctx.fillStyle = cyan;
+                    if(fichasGrafico[this.tipo][this.angulo][py][px] == 7)
+                        ctx.fillStyle = azul;  
+                           
                     ctx.fillRect((this.x+px)*anchoTablero,(this.y+py)*altoTablero,anchoTablero, altoTablero);
                 }
             }
