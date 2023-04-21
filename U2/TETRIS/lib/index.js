@@ -39,6 +39,191 @@ let tablero=[
     [1,1,1,1,1,1,1,1,1,1,1,1],
 ];
 
+let fichasGrafico=[
+    [//Primer pieza
+        [
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+        ],
+    ],
+    [//Segunda pieza
+        [
+            [0,0,0,0],
+            [2,2,2,2],
+            [0,0,0,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,2,0],
+            [0,0,2,0],
+            [0,0,2,0],
+            [0,0,2,0],
+        ],
+        [
+            [0,0,0,0],
+            [2,2,2,2],
+            [0,0,0,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,2,0],
+            [0,0,2,0],
+            [0,0,2,0],
+            [0,0,2,0],
+        ],
+    ],
+    [//Tercera pieza
+        [
+            [0,0,0,0],
+            [0,0,3,3],
+            [0,3,3,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,3,0],
+            [0,0,3,3],
+            [0,0,0,3],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,0],
+            [0,0,3,3],
+            [0,3,3,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,3,0],
+            [0,0,3,3],
+            [0,0,0,3],
+            [0,0,0,0],
+        ], 
+    ],
+    [//Cuarta pieza
+        [
+            [0,0,0,0],
+            [0,4,4,0],
+            [0,0,4,4],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,4],
+            [0,0,4,4],
+            [0,0,4,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,0],
+            [0,4,4,0],
+            [0,0,4,4],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,4],
+            [0,0,4,4],
+            [0,0,4,0],
+            [0,0,0,0],
+        ], 
+    ],
+    [//Quinta pieza
+        [
+            [0,0,0,0],
+            [0,5,5,5],
+            [0,5,0,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,5,0],
+            [0,0,5,0],
+            [0,0,5,5],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,5],
+            [0,5,5,5],
+            [0,0,0,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,5,5,0],
+            [0,0,5,0],
+            [0,0,5,0],
+            [0,0,0,0],
+        ], 
+    ],
+    [//Sexta pieza
+        [
+            [0,0,0,0],
+            [0,6,6,6],
+            [0,0,0,6],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,6,6],
+            [0,0,6,0],
+            [0,0,6,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,6,0,0],
+            [0,6,6,6],
+            [0,0,0,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,0,4],
+            [0,0,4,4],
+            [0,0,4,0],
+            [0,0,0,0],
+        ], 
+    ],
+    [//Séptima pieza
+        [
+            [0,0,0,0],
+            [0,7,7,7],
+            [0,0,7,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,7,0],
+            [0,0,7,7],
+            [0,0,7,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,7,0],
+            [0,7,7,7],
+            [0,0,0,0],
+            [0,0,0,0],
+        ],
+        [
+            [0,0,7,0],
+            [0,7,7,0],
+            [0,0,7,0],
+            [0,0,0,0],
+        ], 
+    ],
+];
+
 //ANCHOR 9.- Crear variable pieza
 let pieza;
 
@@ -47,6 +232,33 @@ let objPieza=function(){
     this.x = 0;
     this.y = 0;
 
+    this.tipo=2;      //7 posibilidades (0-6)
+    this.angulo=0;    //4 posibilidades (0-3)   
+
+    this.retraso=50;
+    this.fotograma=0;
+
+    this.dibuja=function () {
+        for(py=0; py<4; py++){
+            for(px=0; px<4; px++){
+                if(fichasGrafico[this.tipo][this.angulo][py][px]!=0){
+                    ctx.fillStyle ='#777';
+                    ctx.fillRect((this.x+px)*anchoTablero,(this.y+py)*altoTablero,anchoTablero, altoTablero);
+                }
+            }
+        }
+    }
+
+    //ANCHOR Crear nueva pieza aleatoria
+    this.nueva=function() {
+        this.tipo=Math.floor((Math.random()*7));
+        this.fotograma=0;
+        this.x=4;
+        this.y=0;
+
+        console.log(this.tipo);
+    }
+
     console.log('Creanding pieza, soy ese');
 
     this.rotar=function() {
@@ -54,7 +266,10 @@ let objPieza=function(){
     }
 
     //ANCHOR 11.- Métodos principales
-    this.izquerdo=function() {
+    this.rotar=function() {
+        console.log('Yo roto xdxd');
+    }
+    this.izquierdo=function() {
         console.log('NO me desbordo a la I');
     }
     this.derecha=function() {
@@ -70,16 +285,16 @@ function inicializaTeclado() {
     //Lectura del teclado
     document.addEventListener('keydown', function(tecla){
         if(tecla.keyCode==37){
-            console.log('Correle gordo a la izquierda');
+            pieza.izquierdo();
         }
         if(tecla.keyCode==38){
-            console.log('Correle gordo pa arriba');
+            pieza.rotar();
         }
         if(tecla.keyCode==39){
-            console.log('Correle gordo a la derecha');
+            pieza.derecha();
         }
         if(tecla.keyCode==40){
-            console.log('Correle gordo pa abajo');
+            pieza.abajo();
         }
     });
 }
@@ -95,6 +310,7 @@ function inicializa(){
    
     //ANCHOR 10.1 instanciar la clase obj
     pieza = new objPieza();
+    console.log(pieza.nueva());
    
     setInterval(function(){
         principal();
@@ -114,4 +330,5 @@ function borrarCanvas() {
 function principal(){
     //Invocar la funcion borroarCanvas
     borrarCanvas();
+    pieza.dibuja();
 }
