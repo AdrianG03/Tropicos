@@ -1,0 +1,26 @@
+.btn{
+    padding: 14px 28px;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+    display: block;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+#btnRojo{
+   border-color: red;
+}
+
+#btnVerde{
+    border-color: green;
+ }
+
+ #btnAzul{
+    border-color: blue;
+ }
+
+ #btnClean{
+    border-color: black;
+ }
