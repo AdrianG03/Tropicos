@@ -8,6 +8,9 @@ let FPS=50;
 let anchoTablero = 10;
 let altoTablero = 20;
 
+let margenSuperior=4;
+let tamanioFicha=40;
+
 //ANCHOR 5.- Ancho y largo del lienzo
 //Dimensones del canvas
 let anchoCanvas = 400;
@@ -265,8 +268,10 @@ let objPieza=function(){
                         ctx.fillStyle = cyan;
                     if(fichasGrafico[this.tipo][this.angulo][py][px] == 7)
                         ctx.fillStyle = azul;  
-                           
-                    ctx.fillRect((this.x+px)*anchoTablero,(this.y+py)*altoTablero,anchoTablero, altoTablero);
+         
+                    //ctx.fillRect((this.x+px)*anchoTablero,(this.y+py)*altoTablero,anchoTablero, altoTablero);
+                    ctx.fillRect((this.x+(px-1))*tamanioFicha,((this.y-margenSuperior)+py)*tamanioFicha,
+                    tamanioFicha,tamanioFicha);
                 }
             }
         }
